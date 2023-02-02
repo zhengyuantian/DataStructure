@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func main() {
-	a := make([]byte, 26)
+	strs := []string{"eat", "tea", "tan", "ate", "nat", "bat"}
 
-	fmt.Println(len(a))
+	fmt.Println(groupAnagrams(strs))
 }
