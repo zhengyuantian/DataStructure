@@ -3,7 +3,8 @@ package main
 import "fmt"
 
 func main() {
-	strs := []string{"eat", "tea", "tan", "ate", "nat", "bat"}
+	strs := "BC"
+	a := "A"
 
-	fmt.Println(groupAnagrams(strs))
+	fmt.Println(minWindow(strs, a))
 }

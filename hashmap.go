@@ -10,7 +10,6 @@ func groupAnagrams(strs []string) [][]string {
 		for _, b := range str {
 			cnt[b-'a']++
 		}
-		fmt.Println(cnt)
 		mp[cnt] = append(mp[cnt], str)
 		fmt.Println(mp[cnt])
 	}
@@ -19,4 +18,43 @@ func groupAnagrams(strs []string) [][]string {
 		ans = append(ans, v)
 	}
 	return ans
+}
+
+//76 slideWindow map
+
+func minWindow(s string, t string) string {
+	l, r, v := 0, 0, 0
+	n, w := map[byte]int{}, map[byte]int{}
+	st, L := 0, len(s)+1
+	for i, _ := range t {
+		n[t[i]]++
+	}
+	for r < len(s) {
+		c := s[r]
+		r++
+		if n[c] > 0 {
+			w[c]++
+			if w[c] == n[c] {
+				v++
+			}
+		}
+		for len(n) == v {
+			if r-l < L {
+				st = l
+				L = r - l
+			}
+			d := s[l]
+			l++
+			if n[d] > 0 {
+				if w[d] == n[d] {
+					v--
+				}
+				w[d]--
+			}
+		}
+	}
+	if L == len(s)+1 {
+		return ""
+	}
+	return s[st : st+L]
 }
